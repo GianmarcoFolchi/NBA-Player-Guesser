@@ -1,0 +1,619 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BB65D53526A5436B00C488A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53426A5436B00C488A5 /* AppDelegate.swift */; };
+		BB65D53726A5436B00C488A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53626A5436B00C488A5 /* SceneDelegate.swift */; };
+		BB65D53926A5436B00C488A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53826A5436B00C488A5 /* ContentView.swift */; };
+		BB65D53C26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53A26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodeld */; };
+		BB65D53E26A5436D00C488A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB65D53D26A5436D00C488A5 /* Assets.xcassets */; };
+		BB65D54126A5436D00C488A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB65D54026A5436D00C488A5 /* Preview Assets.xcassets */; };
+		BB65D54426A5436D00C488A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB65D54226A5436D00C488A5 /* LaunchScreen.storyboard */; };
+		BB65D54F26A5436D00C488A5 /* NBA_Player_GuesserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D54E26A5436D00C488A5 /* NBA_Player_GuesserTests.swift */; };
+		BB65D55A26A5436D00C488A5 /* NBA_Player_GuesserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D55926A5436D00C488A5 /* NBA_Player_GuesserUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB65D54B26A5436D00C488A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB65D52926A5436B00C488A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB65D53026A5436B00C488A5;
+			remoteInfo = "NBA Player Guesser";
+		};
+		BB65D55626A5436D00C488A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB65D52926A5436B00C488A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB65D53026A5436B00C488A5;
+			remoteInfo = "NBA Player Guesser";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BB65D53126A5436B00C488A5 /* NBA Player Guesser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NBA Player Guesser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB65D53426A5436B00C488A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BB65D53626A5436B00C488A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BB65D53826A5436B00C488A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BB65D53B26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NBA_Player_Guesser.xcdatamodel; sourceTree = "<group>"; };
+		BB65D53D26A5436D00C488A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB65D54026A5436D00C488A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BB65D54326A5436D00C488A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BB65D54526A5436D00C488A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB65D54A26A5436D00C488A5 /* NBA Player GuesserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NBA Player GuesserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB65D54E26A5436D00C488A5 /* NBA_Player_GuesserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBA_Player_GuesserTests.swift; sourceTree = "<group>"; };
+		BB65D55026A5436D00C488A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB65D55526A5436D00C488A5 /* NBA Player GuesserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NBA Player GuesserUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB65D55926A5436D00C488A5 /* NBA_Player_GuesserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBA_Player_GuesserUITests.swift; sourceTree = "<group>"; };
+		BB65D55B26A5436D00C488A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BB65D52E26A5436B00C488A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB65D54726A5436D00C488A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB65D55226A5436D00C488A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BB65D52826A5436B00C488A5 = {
+			isa = PBXGroup;
+			children = (
+				BB65D53326A5436B00C488A5 /* NBA Player Guesser */,
+				BB65D54D26A5436D00C488A5 /* NBA Player GuesserTests */,
+				BB65D55826A5436D00C488A5 /* NBA Player GuesserUITests */,
+				BB65D53226A5436B00C488A5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BB65D53226A5436B00C488A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB65D53126A5436B00C488A5 /* NBA Player Guesser.app */,
+				BB65D54A26A5436D00C488A5 /* NBA Player GuesserTests.xctest */,
+				BB65D55526A5436D00C488A5 /* NBA Player GuesserUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BB65D53326A5436B00C488A5 /* NBA Player Guesser */ = {
+			isa = PBXGroup;
+			children = (
+				BB65D53426A5436B00C488A5 /* AppDelegate.swift */,
+				BB65D53626A5436B00C488A5 /* SceneDelegate.swift */,
+				BB65D53826A5436B00C488A5 /* ContentView.swift */,
+				BB65D53D26A5436D00C488A5 /* Assets.xcassets */,
+				BB65D54226A5436D00C488A5 /* LaunchScreen.storyboard */,
+				BB65D54526A5436D00C488A5 /* Info.plist */,
+				BB65D53A26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodeld */,
+				BB65D53F26A5436D00C488A5 /* Preview Content */,
+			);
+			path = "NBA Player Guesser";
+			sourceTree = "<group>";
+		};
+		BB65D53F26A5436D00C488A5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BB65D54026A5436D00C488A5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BB65D54D26A5436D00C488A5 /* NBA Player GuesserTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB65D54E26A5436D00C488A5 /* NBA_Player_GuesserTests.swift */,
+				BB65D55026A5436D00C488A5 /* Info.plist */,
+			);
+			path = "NBA Player GuesserTests";
+			sourceTree = "<group>";
+		};
+		BB65D55826A5436D00C488A5 /* NBA Player GuesserUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BB65D55926A5436D00C488A5 /* NBA_Player_GuesserUITests.swift */,
+				BB65D55B26A5436D00C488A5 /* Info.plist */,
+			);
+			path = "NBA Player GuesserUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BB65D53026A5436B00C488A5 /* NBA Player Guesser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB65D55E26A5436D00C488A5 /* Build configuration list for PBXNativeTarget "NBA Player Guesser" */;
+			buildPhases = (
+				BB65D52D26A5436B00C488A5 /* Sources */,
+				BB65D52E26A5436B00C488A5 /* Frameworks */,
+				BB65D52F26A5436B00C488A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NBA Player Guesser";
+			productName = "NBA Player Guesser";
+			productReference = BB65D53126A5436B00C488A5 /* NBA Player Guesser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB65D54926A5436D00C488A5 /* NBA Player GuesserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB65D56126A5436D00C488A5 /* Build configuration list for PBXNativeTarget "NBA Player GuesserTests" */;
+			buildPhases = (
+				BB65D54626A5436D00C488A5 /* Sources */,
+				BB65D54726A5436D00C488A5 /* Frameworks */,
+				BB65D54826A5436D00C488A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB65D54C26A5436D00C488A5 /* PBXTargetDependency */,
+			);
+			name = "NBA Player GuesserTests";
+			productName = "NBA Player GuesserTests";
+			productReference = BB65D54A26A5436D00C488A5 /* NBA Player GuesserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BB65D55426A5436D00C488A5 /* NBA Player GuesserUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB65D56426A5436D00C488A5 /* Build configuration list for PBXNativeTarget "NBA Player GuesserUITests" */;
+			buildPhases = (
+				BB65D55126A5436D00C488A5 /* Sources */,
+				BB65D55226A5436D00C488A5 /* Frameworks */,
+				BB65D55326A5436D00C488A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB65D55726A5436D00C488A5 /* PBXTargetDependency */,
+			);
+			name = "NBA Player GuesserUITests";
+			productName = "NBA Player GuesserUITests";
+			productReference = BB65D55526A5436D00C488A5 /* NBA Player GuesserUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB65D52926A5436B00C488A5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					BB65D53026A5436B00C488A5 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					BB65D54926A5436D00C488A5 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = BB65D53026A5436B00C488A5;
+					};
+					BB65D55426A5436D00C488A5 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = BB65D53026A5436B00C488A5;
+					};
+				};
+			};
+			buildConfigurationList = BB65D52C26A5436B00C488A5 /* Build configuration list for PBXProject "NBA Player Guesser" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BB65D52826A5436B00C488A5;
+			productRefGroup = BB65D53226A5436B00C488A5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BB65D53026A5436B00C488A5 /* NBA Player Guesser */,
+				BB65D54926A5436D00C488A5 /* NBA Player GuesserTests */,
+				BB65D55426A5436D00C488A5 /* NBA Player GuesserUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BB65D52F26A5436B00C488A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB65D54426A5436D00C488A5 /* LaunchScreen.storyboard in Resources */,
+				BB65D54126A5436D00C488A5 /* Preview Assets.xcassets in Resources */,
+				BB65D53E26A5436D00C488A5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB65D54826A5436D00C488A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB65D55326A5436D00C488A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BB65D52D26A5436B00C488A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB65D53526A5436B00C488A5 /* AppDelegate.swift in Sources */,
+				BB65D53C26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodeld in Sources */,
+				BB65D53726A5436B00C488A5 /* SceneDelegate.swift in Sources */,
+				BB65D53926A5436B00C488A5 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB65D54626A5436D00C488A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB65D54F26A5436D00C488A5 /* NBA_Player_GuesserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB65D55126A5436D00C488A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB65D55A26A5436D00C488A5 /* NBA_Player_GuesserUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB65D54C26A5436D00C488A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB65D53026A5436B00C488A5 /* NBA Player Guesser */;
+			targetProxy = BB65D54B26A5436D00C488A5 /* PBXContainerItemProxy */;
+		};
+		BB65D55726A5436D00C488A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB65D53026A5436B00C488A5 /* NBA Player Guesser */;
+			targetProxy = BB65D55626A5436D00C488A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BB65D54226A5436D00C488A5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB65D54326A5436D00C488A5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB65D55C26A5436D00C488A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BB65D55D26A5436D00C488A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BB65D55F26A5436D00C488A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NBA Player Guesser/Preview Content\"";
+				DEVELOPMENT_TEAM = MRQ2V4PDG5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "NBA Player Guesser/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Gianmarco.NBA-Player-Guesser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BB65D56026A5436D00C488A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NBA Player Guesser/Preview Content\"";
+				DEVELOPMENT_TEAM = MRQ2V4PDG5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "NBA Player Guesser/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Gianmarco.NBA-Player-Guesser";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BB65D56226A5436D00C488A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRQ2V4PDG5;
+				INFOPLIST_FILE = "NBA Player GuesserTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Gianmarco.NBA-Player-GuesserTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NBA Player Guesser.app/NBA Player Guesser";
+			};
+			name = Debug;
+		};
+		BB65D56326A5436D00C488A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRQ2V4PDG5;
+				INFOPLIST_FILE = "NBA Player GuesserTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Gianmarco.NBA-Player-GuesserTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NBA Player Guesser.app/NBA Player Guesser";
+			};
+			name = Release;
+		};
+		BB65D56526A5436D00C488A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRQ2V4PDG5;
+				INFOPLIST_FILE = "NBA Player GuesserUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Gianmarco.NBA-Player-GuesserUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "NBA Player Guesser";
+			};
+			name = Debug;
+		};
+		BB65D56626A5436D00C488A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MRQ2V4PDG5;
+				INFOPLIST_FILE = "NBA Player GuesserUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Gianmarco.NBA-Player-GuesserUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "NBA Player Guesser";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB65D52C26A5436B00C488A5 /* Build configuration list for PBXProject "NBA Player Guesser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB65D55C26A5436D00C488A5 /* Debug */,
+				BB65D55D26A5436D00C488A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB65D55E26A5436D00C488A5 /* Build configuration list for PBXNativeTarget "NBA Player Guesser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB65D55F26A5436D00C488A5 /* Debug */,
+				BB65D56026A5436D00C488A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB65D56126A5436D00C488A5 /* Build configuration list for PBXNativeTarget "NBA Player GuesserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB65D56226A5436D00C488A5 /* Debug */,
+				BB65D56326A5436D00C488A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB65D56426A5436D00C488A5 /* Build configuration list for PBXNativeTarget "NBA Player GuesserUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB65D56526A5436D00C488A5 /* Debug */,
+				BB65D56626A5436D00C488A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BB65D53A26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BB65D53B26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodel */,
+			);
+			currentVersion = BB65D53B26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodel */;
+			path = NBA_Player_Guesser.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BB65D52926A5436B00C488A5 /* Project object */;
+}
