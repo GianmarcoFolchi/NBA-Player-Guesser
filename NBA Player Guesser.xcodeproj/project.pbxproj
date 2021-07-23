@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB1A8FB826A745D700A48F96 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A8FB726A745D700A48F96 /* Home.swift */; };
 		BB65D53526A5436B00C488A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53426A5436B00C488A5 /* AppDelegate.swift */; };
 		BB65D53726A5436B00C488A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53626A5436B00C488A5 /* SceneDelegate.swift */; };
 		BB65D53926A5436B00C488A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53826A5436B00C488A5 /* ContentView.swift */; };
@@ -16,6 +17,10 @@
 		BB65D54426A5436D00C488A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB65D54226A5436D00C488A5 /* LaunchScreen.storyboard */; };
 		BB65D54F26A5436D00C488A5 /* NBA_Player_GuesserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D54E26A5436D00C488A5 /* NBA_Player_GuesserTests.swift */; };
 		BB65D55A26A5436D00C488A5 /* NBA_Player_GuesserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D55926A5436D00C488A5 /* NBA_Player_GuesserUITests.swift */; };
+		BB65D56926A5447E00C488A5 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D56826A5447E00C488A5 /* QuestionView.swift */; };
+		BBBA8CAC26A7F801000C29D2 /* PlayerCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA8CAB26A7F801000C29D2 /* PlayerCards.swift */; };
+		BBBA8CB026A7FB0B000C29D2 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA8CAF26A7FB0B000C29D2 /* Question.swift */; };
+		BBBA8CB526A9E5A0000C29D2 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA8CB426A9E5A0000C29D2 /* QuestionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB1A8FB726A745D700A48F96 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		BB65D53126A5436B00C488A5 /* NBA Player Guesser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NBA Player Guesser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB65D53426A5436B00C488A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB65D53626A5436B00C488A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,10 @@
 		BB65D55526A5436D00C488A5 /* NBA Player GuesserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NBA Player GuesserUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB65D55926A5436D00C488A5 /* NBA_Player_GuesserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBA_Player_GuesserUITests.swift; sourceTree = "<group>"; };
 		BB65D55B26A5436D00C488A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB65D56826A5447E00C488A5 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		BBBA8CAB26A7F801000C29D2 /* PlayerCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCards.swift; sourceTree = "<group>"; };
+		BBBA8CAF26A7FB0B000C29D2 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		BBBA8CB426A9E5A0000C29D2 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +111,9 @@
 		BB65D53326A5436B00C488A5 /* NBA Player Guesser */ = {
 			isa = PBXGroup;
 			children = (
+				BBBA8CB126A7FB12000C29D2 /* Model */,
+				BBBA8CB226A93D00000C29D2 /* ViewModels */,
+				BB65D56726A5446500C488A5 /* Views */,
 				BB65D53426A5436B00C488A5 /* AppDelegate.swift */,
 				BB65D53626A5436B00C488A5 /* SceneDelegate.swift */,
 				BB65D53826A5436B00C488A5 /* ContentView.swift */,
@@ -137,6 +150,40 @@
 				BB65D55B26A5436D00C488A5 /* Info.plist */,
 			);
 			path = "NBA Player GuesserUITests";
+			sourceTree = "<group>";
+		};
+		BB65D56726A5446500C488A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBBA8CB326A9E56D000C29D2 /* Question View */,
+				BB1A8FB726A745D700A48F96 /* Home.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BBBA8CB126A7FB12000C29D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BBBA8CAF26A7FB0B000C29D2 /* Question.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BBBA8CB226A93D00000C29D2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BBBA8CB426A9E5A0000C29D2 /* QuestionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BBBA8CB326A9E56D000C29D2 /* Question View */ = {
+			isa = PBXGroup;
+			children = (
+				BB65D56826A5447E00C488A5 /* QuestionView.swift */,
+				BBBA8CAB26A7F801000C29D2 /* PlayerCards.swift */,
+			);
+			path = "Question View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +317,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB65D53526A5436B00C488A5 /* AppDelegate.swift in Sources */,
+				BBBA8CB026A7FB0B000C29D2 /* Question.swift in Sources */,
 				BB65D53C26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodeld in Sources */,
+				BB65D56926A5447E00C488A5 /* QuestionView.swift in Sources */,
+				BBBA8CAC26A7F801000C29D2 /* PlayerCards.swift in Sources */,
 				BB65D53726A5436B00C488A5 /* SceneDelegate.swift in Sources */,
+				BB1A8FB826A745D700A48F96 /* Home.swift in Sources */,
+				BBBA8CB526A9E5A0000C29D2 /* QuestionViewModel.swift in Sources */,
 				BB65D53926A5436B00C488A5 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
