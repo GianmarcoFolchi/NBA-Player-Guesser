@@ -10,8 +10,7 @@ import SwiftUI
 struct Player_Cards: View {
     
     @ObservedObject var question: Question
-    @Binding var isSubmitted: Bool 
-    
+    @Binding var isSubmitted: Bool
     var body: some View {
         //TODO: Check if the phone is in dark mode or light mode
         

@@ -10,11 +10,10 @@ import SwiftUI
 struct QuestionView: View {
     //StateObject use on creation
     //ObservedObject use this for subviews
-    @StateObject var questionViewModel: QuestionViewModel = QuestionViewModel()
-    @State var isSelected: Bool = false
+    @ObservedObject var QVC: QuestionViewModel
     @State var isSubmitted = false
     @State var buttonText = "Submit"
-    
+    @Binding var isCompleted: Bool
     
     var body: some View {
         VStack {
@@ -25,7 +24,7 @@ struct QuestionView: View {
                 
                 Capsule()
                     .fill(Color.green)
-                    .frame(width: questionViewModel.progress(), height: 6)
+                    .frame(width: QVC.progress(), height: 6)
             })
             
             Text("Guess The Player!")
@@ -39,19 +38,19 @@ struct QuestionView: View {
                 .foregroundColor(.black)
                 .padding(.top, 8)
             
-            Text("Points Per Game: \(questionViewModel.currentQuestion().answer.stats!.pointsPerGame)")
+            Text("Points Per Game: \(QVC.currentQuestion().answer.stats!.pointsPerGame)")
                 .font(.system(size: 20))
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .padding(.top, 5)
             
-            Text("Assists Per Game: \(questionViewModel.currentQuestion().answer.stats!.assistsPerGame)")
+            Text("Assists Per Game: \(QVC.currentQuestion().answer.stats!.assistsPerGame)")
                 .font(.system(size: 20))
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .padding(.top, 5)
             
-            Text("Rebounds Per Game: \(questionViewModel.currentQuestion().answer.stats!.reboundsPerGame)")
+            Text("Rebounds Per Game: \(QVC.currentQuestion().answer.stats!.reboundsPerGame)")
                 .font(.system(size: 20))
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
@@ -60,7 +59,7 @@ struct QuestionView: View {
             Spacer(minLength: 0)
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2), spacing: 25, content: {
-                Player_Cards(question: questionViewModel.currentQuestion(), isSubmitted: $isSubmitted)
+                Player_Cards(question: QVC.questions[QVC.currentIndex], isSubmitted: $isSubmitted)
             })
             .padding()
             Spacer(minLength: 0)
@@ -68,23 +67,19 @@ struct QuestionView: View {
             Button(action: {
                 if isSubmitted == false {
                     //update the score
-                    if questionViewModel.currentQuestion().isCorrect() {
-                        questionViewModel.numCorrect += 1
+                    if QVC.currentQuestion().isCorrect() {
+                        QVC.numCorrect += 1
                     } else {
-                        questionViewModel.numIncorrect += 1
+                        QVC.numIncorrect += 1
                     }
                     //update the view to show the correct answer
                     isSubmitted.toggle()
                     buttonText = "Next Question"
                 } else {
                     //Go into the next question
-                    
-                    
-                    
-//                    print("correct: \(questionViewModel.numCorrect)")
-//                    print("incorrect: \(questionViewModel.numIncorrect)")
-//                    print("index: \(questionViewModel.currentIndex)")
-//                    print(" ")
+                    QVC.nextQuestion()
+                    print(QVC.currentIndex)
+                    print(QVC.currentQuestion().players[0].name)
                 }
                 
             }, label: {
@@ -106,7 +101,7 @@ struct QuestionView: View {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            QuestionView()
+//            QuestionView(questionViewModel: QuestionViewModel)
             Home()
         }
     }

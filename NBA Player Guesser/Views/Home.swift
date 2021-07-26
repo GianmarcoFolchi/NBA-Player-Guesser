@@ -9,6 +9,9 @@ import SwiftUI
 
 struct Home: View {
     @State var presentQuestionView: Bool = false
+    @State var showNextQuestion = false
+    @StateObject var QVC: QuestionViewModel = QuestionViewModel()
+    
     var body: some View {
         VStack {
             Spacer()
@@ -21,22 +24,17 @@ struct Home: View {
                 }
             
             Spacer()
-                
+            
         }
         
         .sheet(isPresented: $presentQuestionView, content: {
-            QuestionView()
+            QuestionView(QVC: QVC, isCompleted: $showNextQuestion)
+//                    .offset(x: showNextQuestion ? 1000 : 0)
+//                    .rotationEffect(.init(degrees: showNextQuestion ? 10 : 0))
+            
         })
     }
 }
-
-
-
-
-
-
-
-
 
 struct HomePreviews: PreviewProvider {
     static var previews: some View {

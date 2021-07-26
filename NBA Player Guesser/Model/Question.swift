@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class Question: ObservableObject {
+class Question: ObservableObject, Identifiable {
     var players: [Player]
     var answer: Player
     @Published var selectedAnswer: Player?
