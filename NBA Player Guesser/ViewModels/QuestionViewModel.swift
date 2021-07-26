@@ -11,8 +11,6 @@ import SwiftUI
 class QuestionViewModel: ObservableObject {
     var questions: [Question] = []
     var currentIndex: Int = 0
-    var numCorrect: Int = 0
-    var numIncorrect: Int = 0
     
     init() {
         getTestCase()
@@ -30,8 +28,8 @@ class QuestionViewModel: ObservableObject {
         }
     }   
     
-    func progress()-> CGFloat {
-        let fraction = CGFloat(self.currentIndex + 1) / CGFloat(self.questions.count)
+    func progress(currIndex: Int)-> CGFloat {
+        let fraction = CGFloat(currIndex + 1) / CGFloat(self.questions.count)
         
         let width = UIScreen.main.bounds.width - 30
         

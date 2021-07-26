@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct Home: View {
-    @State var presentQuestionView: Bool = false
-    @State var showNextQuestion = false
     @StateObject var QVC: QuestionViewModel = QuestionViewModel()
+    @State var presentQuestionView: Bool = false
+    @State var currentIndex = 0
+    @State var numCorrect = 0
+    @State var numIncorrect = 0
+    @State var showNextQuestion = false
     
     var body: some View {
         VStack {
@@ -28,7 +31,7 @@ struct Home: View {
         }
         
         .sheet(isPresented: $presentQuestionView, content: {
-            QuestionView(QVC: QVC, isCompleted: $showNextQuestion)
+            QuestionView(Question: QVC.currentQuestion(), currentIndex: $currentIndex, numCorrect: $numCorrect, numIncorrect: $numIncorrect, showNextQuestion: $showNextQuestion, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex))
 //                    .offset(x: showNextQuestion ? 1000 : 0)
 //                    .rotationEffect(.init(degrees: showNextQuestion ? 10 : 0))
             

@@ -10,10 +10,16 @@ import SwiftUI
 struct QuestionView: View {
     //StateObject use on creation
     //ObservedObject use this for subviews
-    @ObservedObject var QVC: QuestionViewModel
+    @ObservedObject var Question: Question
+    @Binding var currentIndex: Int
     @State var isSubmitted = false
     @State var buttonText = "Submit"
-    @Binding var isCompleted: Bool
+    @Binding var numCorrect: Int
+    @Binding var numIncorrect: Int
+    @Binding var showNextQuestion: Bool
+    var maxIndex: Int
+    var progress: CGFloat
+    
     
     var body: some View {
         VStack {
@@ -24,7 +30,7 @@ struct QuestionView: View {
                 
                 Capsule()
                     .fill(Color.green)
-                    .frame(width: QVC.progress(), height: 6)
+                    .frame(width: progress)
             })
             
             Text("Guess The Player!")
@@ -32,25 +38,53 @@ struct QuestionView: View {
                 .fontWeight(.heavy)
                 .foregroundColor(.purple)
                 .padding(.top)
+            
+            HStack {
+                Spacer()
+                Label(
+                    title: { Text("\(numCorrect)")
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                    },
+                    icon: { Image(systemName: "checkmark")
+                        .font(.largeTitle)
+                        .foregroundColor(.green)
+                    })
+                
+                Spacer()
+                
             Text("Career Averages: ")
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .padding(.top, 8)
-            
-            Text("Points Per Game: \(QVC.currentQuestion().answer.stats!.pointsPerGame)")
+                
+            Spacer()
+                
+                Label(
+                    title: { Text("\(numIncorrect)")
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                    },
+                    icon: { Image(systemName: "xmark")
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
+                    })
+                Spacer()
+            }
+            Text("Points Per Game: \(Question.answer.stats!.pointsPerGame)")
                 .font(.system(size: 20))
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .padding(.top, 5)
             
-            Text("Assists Per Game: \(QVC.currentQuestion().answer.stats!.assistsPerGame)")
+            Text("Assists Per Game: \(Question.answer.stats!.assistsPerGame)")
                 .font(.system(size: 20))
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .padding(.top, 5)
             
-            Text("Rebounds Per Game: \(QVC.currentQuestion().answer.stats!.reboundsPerGame)")
+            Text("Rebounds Per Game: \(Question.answer.stats!.reboundsPerGame)")
                 .font(.system(size: 20))
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
@@ -59,7 +93,7 @@ struct QuestionView: View {
             Spacer(minLength: 0)
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2), spacing: 25, content: {
-                Player_Cards(question: QVC.questions[QVC.currentIndex], isSubmitted: $isSubmitted)
+                Player_Cards(question: Question, isSubmitted: $isSubmitted)
             })
             .padding()
             Spacer(minLength: 0)
@@ -67,19 +101,20 @@ struct QuestionView: View {
             Button(action: {
                 if isSubmitted == false {
                     //update the score
-                    if QVC.currentQuestion().isCorrect() {
-                        QVC.numCorrect += 1
+                    if Question.isCorrect() {
+                        numCorrect += 1
                     } else {
-                        QVC.numIncorrect += 1
+                        numIncorrect += 1
                     }
                     //update the view to show the correct answer
                     isSubmitted.toggle()
                     buttonText = "Next Question"
                 } else {
                     //Go into the next question
-                    QVC.nextQuestion()
-                    print(QVC.currentIndex)
-                    print(QVC.currentQuestion().players[0].name)
+                    isSubmitted.toggle()
+                    showNextQuestion.toggle()
+                    currentIndex += 1
+                    buttonText = "Submit"
                 }
                 
             }, label: {
@@ -96,6 +131,12 @@ struct QuestionView: View {
         }
         .background(Color.black.opacity(0.05).ignoresSafeArea())
     }
+    
+    func nextQuestion(currIndex: Int, maxIndex: Int) {
+        
+    }
+    
+    
 }
 
 struct Home_Previews: PreviewProvider {
