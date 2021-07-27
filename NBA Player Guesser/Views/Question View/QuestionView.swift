@@ -17,162 +17,79 @@ struct QuestionView: View {
     @Binding var numCorrect: Int
     @Binding var numIncorrect: Int
     @Binding var showNextQuestion: Bool
+    var test = false
     var maxIndex: Int
     var progress: CGFloat
     
+    @Environment(\.presentationMode) var presentationMode
+    //presentationMode.wrappedValue.dismiss()
+    
     
     var body: some View {
+        
         VStack {
-            ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
-                Capsule()
-                    .fill(Color.gray.opacity(0.7))
-                    .frame(height: 6)
-                
-                Capsule()
-                    .fill(Color.green)
-                    .frame(width: progress)
-            })
-            
-            Text("Guess The Player!")
-                .font(.system(size: 38))
-                .fontWeight(.heavy)
-                .foregroundColor(.purple)
-                .padding(.top)
-            
-            HStack {
+            if Question == nil {
+                ProgressView()
+            } else {
                 Spacer()
-                Label(
-                    title: { Text("\(numCorrect)")
-                        .font(.largeTitle)
-                        .foregroundColor(.black)
-                    },
-                    icon: { Image(systemName: "checkmark")
-                        .font(.largeTitle)
-                        .foregroundColor(.green)
-                    })
+                ZStack(alignment: Alignment(horizontal: .leading, vertical: .center), content: {
+                    Capsule()
+                        .fill(Color.gray.opacity(0.7))
+                        .frame(height: 6)
+                    
+                    Capsule()
+                        .fill(Color.green)
+                        .frame(width: progress, height: 6)
+                })
                 
-                Spacer()
+//                RightWrongCounter(numCorrect: $numCorrect, numIncorrect: $numIncorrect)
                 
-            Text("Career Averages: ")
-                .font(.title2)
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-                .padding(.top, 8)
+                PlayerInfo(Question: Question, numCorrect: numCorrect, numIncorrect: numIncorrect)
                 
-            Spacer()
+                Spacer(minLength: 0)
                 
-                Label(
-                    title: { Text("\(numIncorrect)")
-                        .font(.largeTitle)
-                        .foregroundColor(.black)
-                    },
-                    icon: { Image(systemName: "xmark")
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
-                    })
-                Spacer()
-            }
-            Text("Points Per Game: \(Question.answer.stats!.pointsPerGame)")
-                .font(.system(size: 20))
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-                .padding(.top, 5)
-            
-            Text("Assists Per Game: \(Question.answer.stats!.assistsPerGame)")
-                .font(.system(size: 20))
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-                .padding(.top, 5)
-            
-            Text("Rebounds Per Game: \(Question.answer.stats!.reboundsPerGame)")
-                .font(.system(size: 20))
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-                .padding(.top, 5)
-            
-            Spacer(minLength: 0)
-            
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2), spacing: 25, content: {
-                Player_Cards(question: Question, isSubmitted: $isSubmitted)
-            })
-            .padding()
-            Spacer(minLength: 0)
-            
-            Button(action: {
-                if isSubmitted == false {
-                    //update the score
-                    if Question.isCorrect() {
-                        numCorrect += 1
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2), spacing: 25, content: {
+                    Player_Cards(question: Question, isSubmitted: $isSubmitted)
+                })
+                    .padding()
+                
+                Spacer(minLength: 0)
+                
+                Button(action: {
+                    if isSubmitted == false {
+                        if Question.isCorrect() {
+                            numCorrect += 1
+                        } else {
+                            numIncorrect += 1
+                        }
+                        
+                        //update the view to show the correct answer
+                        isSubmitted.toggle()
+                        buttonText = "Next Question"
                     } else {
-                        numIncorrect += 1
+                        //Go into the next question and reset subview
+                        isSubmitted.toggle()
+                        showNextQuestion.toggle()
+                        if currentIndex == maxIndex {
+                            presentationMode.wrappedValue.dismiss()
+                        } else {
+                            currentIndex += 1
+                        }
+                        buttonText = "Submit"
                     }
-                    //update the view to show the correct answer
-                    isSubmitted.toggle()
-                    buttonText = "Next Question"
-                } else {
-                    //Go into the next question
-                    isSubmitted.toggle()
-                    showNextQuestion.toggle()
-                    currentIndex += 1
-                    buttonText = "Submit"
-                }
-                
-            }, label: {
-                Text(buttonText)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.white)
-                    .padding(.vertical)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                //.cornerRadius(2) Maybe change in the future
-            })
-            //            .disabled(questionViewModel.currentQuestion().selectedAnswer?.name == nil ? true : false)
-            //            .opacity(questionViewModel.currentQuestion().selectedAnswer == nil ? 1 : 0.7)
+                    
+                }, label: {
+                    Text(buttonText)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                })
+                //            .disabled(questionViewModel.currentQuestion().selectedAnswer?.name == nil ? true : false)
+                //            .opacity(questionViewModel.currentQuestion().selectedAnswer == nil ? 1 : 0.7)
+            }
         }
         .background(Color.black.opacity(0.05).ignoresSafeArea())
     }
-    
-    func nextQuestion(currIndex: Int, maxIndex: Int) {
-        
-    }
-    
-    
 }
-
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        Group{
-//            QuestionView(questionViewModel: QuestionViewModel)
-            Home()
-        }
-    }
-}
-
-
-
-
-//            .padding()
-
-//            HStack {
-//                Label(
-//                    title: { Text("1")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.black)
-//                    },
-//                    icon: { Image(systemName: "checkmark")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.green)
-//                    })
-//
-//                Spacer()
-//
-//                Label(
-//                    title: { Text("1")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.black)
-//                    },
-//                    icon: { Image(systemName: "xmark")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.red)
-//                    })
-//            }

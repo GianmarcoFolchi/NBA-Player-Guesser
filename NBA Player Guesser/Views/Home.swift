@@ -30,7 +30,7 @@ struct Home: View {
             
         }
         
-        .sheet(isPresented: $presentQuestionView, content: {
+        .fullScreenCover(isPresented: $presentQuestionView, content: {
             QuestionView(Question: QVC.questions[currentIndex], currentIndex: $currentIndex, numCorrect: $numCorrect, numIncorrect: $numIncorrect, showNextQuestion: $showNextQuestion, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex))
 //                    .offset(x: showNextQuestion ? 1000 : 0)
 //                    .rotationEffect(.init(degrees: showNextQuestion ? 10 : 0))
