@@ -13,8 +13,7 @@ class Question: ObservableObject, Identifiable{
     var answer: Player
     
     init(players: [Player]) {
-        //to avoid error
-        self.answer = players[0]
+        self.answer = players[0] //to avoid error
         for player in players {
             if player.isAnswer {
                 self.answer = player
@@ -24,7 +23,6 @@ class Question: ObservableObject, Identifiable{
     }
     
     func isCorrect(selectedAnswer: Player)-> Bool {
-//            guard let selectedAnswer = self.$selectedAnswer else { return false }
             if selectedAnswer.isAnswer {
                 return true
             } else {
@@ -44,7 +42,7 @@ class Player: Equatable {
         self.name = name
         self.picture = picture
         self.team = team
-        ///if there is stats the this player is the answer to the question
+        //if there is stats the this player is the answer to the question
         if let stats = stats {
             self.stats = stats
             self.isAnswer = true

@@ -13,7 +13,6 @@ struct QuestionView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var Question: Question
     @Binding var currentIndex: Int
-    @Binding var showNextQuestion: Bool
     @Binding var presentQuestionView: Bool
     @State var isSubmitted = false
     @State var buttonText = "Submit"
@@ -55,32 +54,29 @@ struct QuestionView: View {
                 
                 Button(action: {
                     if isSubmitted == false {
+                        //update the view to show the correct answer
+                        isSubmitted.toggle()
+                        buttonText = "Next Question"
                         guard let answer = selectedAnswer else {return}
                         if Question.isCorrect(selectedAnswer: answer) {
                             numCorrect += 1
                         } else {
                             numIncorrect += 1
                         }
-                        
-                        //update the view to show the correct answer
-                        selectedAnswer = nil
-                        isSubmitted.toggle()
-                        buttonText = "Next Question"
                     } else {
                         //Go into the next question and reset subview
                         isSubmitted.toggle()
-                        showNextQuestion.toggle()
+                        selectedAnswer = nil
+                        buttonText = "Submit"
+                        
+                        //Maintain Index
                         if currentIndex == maxIndex {
                             presentEndView.toggle()
-                            //temporary reset, until i can find a way to pass in the new data
                             currentIndex = 0
-                            
                         } else {
                             currentIndex += 1
                         }
-                        buttonText = "Submit"
                     }
-                    
                 }, label: {
                     Text(buttonText)
                         .fontWeight(.heavy)
@@ -89,8 +85,8 @@ struct QuestionView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                 })
-                //            .disabled(questionViewModel.currentQuestion().selectedAnswer?.name == nil ? true : false)
-                //            .opacity(questionViewModel.currentQuestion().selectedAnswer == nil ? 1 : 0.7)
+                .disabled(selectedAnswer == nil ? true : false)
+                .opacity(selectedAnswer == nil ? 0.7 : 1)
             }
         }
         .fullScreenCover(isPresented: $presentEndView, content: {

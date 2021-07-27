@@ -20,14 +20,6 @@ class QuestionViewModel: ObservableObject {
         return self.questions[self.currentIndex]
     }
     
-    func nextQuestion() {
-        if self.questions.count != self.currentIndex {
-            self.currentIndex += 1
-        } else {
-//            TODO:  when last question is reached
-        }
-    }   
-    
     func progress(currIndex: Int)-> CGFloat {
         let fraction = CGFloat(currIndex + 1) / CGFloat(self.questions.count)
         

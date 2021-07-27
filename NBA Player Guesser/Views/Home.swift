@@ -13,7 +13,6 @@ struct Home: View {
     @State var currentIndex = 0
     @State var numCorrect = 0
     @State var numIncorrect = 0
-    @State var showNextQuestion = false
     
     var body: some View {
         VStack {
@@ -23,7 +22,6 @@ struct Home: View {
                 .font(.title2)
                 .bold()
                 .onTapGesture {
-//                    QVC.getTestCase()
                     presentQuestionView.toggle()
                 }
             
@@ -32,10 +30,10 @@ struct Home: View {
         }
         
         .fullScreenCover(isPresented: $presentQuestionView, content: {
-            QuestionView(Question: QVC.questions[currentIndex], currentIndex: $currentIndex, showNextQuestion: $showNextQuestion, presentQuestionView: $presentQuestionView, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex))
+            QuestionView(Question: QVC.questions[currentIndex], currentIndex: $currentIndex, presentQuestionView: $presentQuestionView, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex))
 //                    .offset(x: showNextQuestion ? 1000 : 0)
 //                    .rotationEffect(.init(degrees: showNextQuestion ? 10 : 0))
-            
+                
         })
     }
     

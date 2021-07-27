@@ -161,8 +161,8 @@
 		BB65D56726A5446500C488A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BBBA8CB326A9E56D000C29D2 /* Question View */,
 				BB1A8FB726A745D700A48F96 /* Home.swift */,
+				BBBA8CB326A9E56D000C29D2 /* Question View */,
 			);
 			path = Views;
 			sourceTree = "<group>";
