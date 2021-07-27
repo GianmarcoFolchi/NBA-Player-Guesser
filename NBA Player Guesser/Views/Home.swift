@@ -23,6 +23,7 @@ struct Home: View {
                 .font(.title2)
                 .bold()
                 .onTapGesture {
+//                    QVC.getTestCase()
                     presentQuestionView.toggle()
                 }
             
@@ -31,12 +32,13 @@ struct Home: View {
         }
         
         .fullScreenCover(isPresented: $presentQuestionView, content: {
-            QuestionView(Question: QVC.questions[currentIndex], currentIndex: $currentIndex, numCorrect: $numCorrect, numIncorrect: $numIncorrect, showNextQuestion: $showNextQuestion, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex))
+            QuestionView(Question: QVC.questions[currentIndex], currentIndex: $currentIndex, showNextQuestion: $showNextQuestion, presentQuestionView: $presentQuestionView, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex))
 //                    .offset(x: showNextQuestion ? 1000 : 0)
 //                    .rotationEffect(.init(degrees: showNextQuestion ? 10 : 0))
             
         })
     }
+    
 }
 
 struct HomePreviews: PreviewProvider {

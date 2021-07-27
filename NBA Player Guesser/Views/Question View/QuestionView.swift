@@ -10,23 +10,21 @@ import SwiftUI
 struct QuestionView: View {
     //StateObject use on creation
     //ObservedObject use this for subviews
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var Question: Question
     @Binding var currentIndex: Int
+    @Binding var showNextQuestion: Bool
+    @Binding var presentQuestionView: Bool
     @State var isSubmitted = false
     @State var buttonText = "Submit"
-    @Binding var numCorrect: Int
-    @Binding var numIncorrect: Int
-    @Binding var showNextQuestion: Bool
-    var test = false
+    @State var numCorrect = 0
+    @State var numIncorrect = 0
+    @State var presentEndView: Bool = false
+    @State var selectedAnswer: Player? = nil
     var maxIndex: Int
     var progress: CGFloat
     
-    @Environment(\.presentationMode) var presentationMode
-    //presentationMode.wrappedValue.dismiss()
-    
-    
     var body: some View {
-        
         VStack {
             if Question == nil {
                 ProgressView()
@@ -49,7 +47,7 @@ struct QuestionView: View {
                 Spacer(minLength: 0)
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2), spacing: 25, content: {
-                    Player_Cards(question: Question, isSubmitted: $isSubmitted)
+                    Player_Cards(question: Question, isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswer)
                 })
                     .padding()
                 
@@ -57,13 +55,15 @@ struct QuestionView: View {
                 
                 Button(action: {
                     if isSubmitted == false {
-                        if Question.isCorrect() {
+                        guard let answer = selectedAnswer else {return}
+                        if Question.isCorrect(selectedAnswer: answer) {
                             numCorrect += 1
                         } else {
                             numIncorrect += 1
                         }
                         
                         //update the view to show the correct answer
+                        selectedAnswer = nil
                         isSubmitted.toggle()
                         buttonText = "Next Question"
                     } else {
@@ -71,7 +71,10 @@ struct QuestionView: View {
                         isSubmitted.toggle()
                         showNextQuestion.toggle()
                         if currentIndex == maxIndex {
-                            presentationMode.wrappedValue.dismiss()
+                            presentEndView.toggle()
+                            //temporary reset, until i can find a way to pass in the new data
+                            currentIndex = 0
+                            
                         } else {
                             currentIndex += 1
                         }
@@ -90,6 +93,9 @@ struct QuestionView: View {
                 //            .opacity(questionViewModel.currentQuestion().selectedAnswer == nil ? 1 : 0.7)
             }
         }
+        .fullScreenCover(isPresented: $presentEndView, content: {
+            EndGame(presentQuestionView: $presentQuestionView, numCorrect: numCorrect, numIncorrect: numIncorrect)
+        })
         .background(Color.black.opacity(0.05).ignoresSafeArea())
     }
 }

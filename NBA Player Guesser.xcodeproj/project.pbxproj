@@ -10,6 +10,7 @@
 		BB1A8FB826A745D700A48F96 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A8FB726A745D700A48F96 /* Home.swift */; };
 		BB56922226AFBEE20034A581 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56922126AFBEE20034A581 /* PlayerInfo.swift */; };
 		BB56922426AFC01D0034A581 /* RIght&WrongCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56922326AFC01D0034A581 /* RIght&WrongCounter.swift */; };
+		BB56922826AFD8D90034A581 /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56922726AFD8D90034A581 /* EndGame.swift */; };
 		BB65D53526A5436B00C488A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53426A5436B00C488A5 /* AppDelegate.swift */; };
 		BB65D53726A5436B00C488A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53626A5436B00C488A5 /* SceneDelegate.swift */; };
 		BB65D53926A5436B00C488A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65D53826A5436B00C488A5 /* ContentView.swift */; };
@@ -46,6 +47,7 @@
 		BB1A8FB726A745D700A48F96 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		BB56922126AFBEE20034A581 /* PlayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		BB56922326AFC01D0034A581 /* RIght&WrongCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RIght&WrongCounter.swift"; sourceTree = "<group>"; };
+		BB56922726AFD8D90034A581 /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
 		BB65D53126A5436B00C488A5 /* NBA Player Guesser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NBA Player Guesser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB65D53426A5436B00C488A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB65D53626A5436B00C488A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				BB65D56826A5447E00C488A5 /* QuestionView.swift */,
+				BB56922726AFD8D90034A581 /* EndGame.swift */,
 				BB56922126AFBEE20034A581 /* PlayerInfo.swift */,
 				BBBA8CAB26A7F801000C29D2 /* PlayerCards.swift */,
 				BB56922326AFC01D0034A581 /* RIght&WrongCounter.swift */,
@@ -331,6 +334,7 @@
 				BB65D53726A5436B00C488A5 /* SceneDelegate.swift in Sources */,
 				BB1A8FB826A745D700A48F96 /* Home.swift in Sources */,
 				BBBA8CB526A9E5A0000C29D2 /* QuestionViewModel.swift in Sources */,
+				BB56922826AFD8D90034A581 /* EndGame.swift in Sources */,
 				BB65D53926A5436B00C488A5 /* ContentView.swift in Sources */,
 				BB56922426AFC01D0034A581 /* RIght&WrongCounter.swift in Sources */,
 			);

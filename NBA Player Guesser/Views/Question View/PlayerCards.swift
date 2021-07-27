@@ -11,9 +11,9 @@ struct Player_Cards: View {
     
     @ObservedObject var question: Question
     @Binding var isSubmitted: Bool
+    @Binding var selectedAnswer: Player?
+    
     var body: some View {
-        //TODO: Check if the phone is in dark mode or light mode
-        
         VStack(spacing: 15) { //first
             Image(question.players[0].picture)
                 .resizable()
@@ -32,7 +32,7 @@ struct Player_Cards: View {
         .frame(maxWidth: .infinity)
         
         .onTapGesture(perform: {
-            question.selectedAnswer = question.players[0]
+            selectedAnswer = question.players[0]
         })
         
         .background(
@@ -58,7 +58,7 @@ struct Player_Cards: View {
         .padding()
         .frame(maxWidth: .infinity)
         .onTapGesture(perform: {
-            question.selectedAnswer = question.players[1]
+            selectedAnswer = question.players[1]
         })
         .background(
             RoundedRectangle(cornerRadius: 15)
@@ -83,7 +83,7 @@ struct Player_Cards: View {
         .padding()
         .frame(maxWidth: .infinity)
         .onTapGesture(perform: {
-            question.selectedAnswer = question.players[2]
+            selectedAnswer = question.players[2]
         })
         .background(
             RoundedRectangle(cornerRadius: 15)
@@ -108,7 +108,7 @@ struct Player_Cards: View {
         .padding()
         .frame(maxWidth: .infinity)
         .onTapGesture(perform: {
-            question.selectedAnswer = question.players[3]
+            selectedAnswer = question.players[3]
         })
         .background(
             RoundedRectangle(cornerRadius: 15)
@@ -125,7 +125,7 @@ struct Player_Cards: View {
                 return Color.red
             }
         } else {
-            if option == question.selectedAnswer {
+            if option == selectedAnswer {
                 return Color.green
             } else {
                 return Color.gray
@@ -138,10 +138,4 @@ struct Player_Cards: View {
 //    static var previews: some View {
 //       Player_Cards(playerInfo: Player1)
 //    }
-//}
-//if option == question.selectedAnswer {
-//
-//    return Color.green
-//} else {
-//    return Color.gray
 //}

@@ -8,10 +8,9 @@
 import Foundation
 import SwiftUI
 
-class Question: ObservableObject, Identifiable {
+class Question: ObservableObject, Identifiable{
     var players: [Player]
     var answer: Player
-    @Published var selectedAnswer: Player?
     
     init(players: [Player]) {
         //to avoid error
@@ -24,9 +23,9 @@ class Question: ObservableObject, Identifiable {
         self.players = players
     }
     
-        func isCorrect()-> Bool {
+    func isCorrect(selectedAnswer: Player)-> Bool {
 //            guard let selectedAnswer = self.$selectedAnswer else { return false }
-            if self.selectedAnswer!.isAnswer {
+            if selectedAnswer.isAnswer {
                 return true
             } else {
                 return false
