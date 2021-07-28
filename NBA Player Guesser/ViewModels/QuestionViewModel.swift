@@ -40,8 +40,7 @@ class QuestionViewModel: ObservableObject {
         let player7 = Player(name: "Devin Booker", picture: "lv1", team: "Suns", stats: Stats(pointsPerGame: 25.53243, assistsPerGame: 2.13, reboundsPerGame: 4))
         let player8 = Player(name: "Nikola Jokic", picture: "lv1", team: "Nuggets", stats: Stats(pointsPerGame: 26.74, assistsPerGame: 7.40, reboundsPerGame: 12.1))
         let question2 = Question(players: [player5, player6, player7, player8], answer: player8)
-
-        self.questions.append(question1)
-        self.questions.append(question2)
+        
+        self.questions = [question1, question2]
     }
 }

@@ -26,7 +26,7 @@ struct QuestionView: View {
     
     var body: some View {
         VStack {
-            if Question == nil {
+            if QVC.questions.isEmpty == nil {
                 ProgressView()
             } else {
                 Spacer()
@@ -39,8 +39,6 @@ struct QuestionView: View {
                         .fill(Color.green)
                         .frame(width: progress, height: 6)
                 })
-                
-//                RightWrongCounter(numCorrect: $numCorrect, numIncorrect: $numIncorrect)
                 
                 PlayerInfo(Question: Question, numCorrect: numCorrect, numIncorrect: numIncorrect)
                 

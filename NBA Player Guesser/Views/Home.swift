@@ -35,6 +35,11 @@ struct Home: View {
 //                    .rotationEffect(.init(degrees: showNextQuestion ? 10 : 0))
                 
         })
+        
+        .onAppear {
+            //init a new object of QVC to get new questions
+            QVC.getTestCase()
+        }
     }
     
 }
