@@ -22,6 +22,7 @@ struct QuestionView: View {
     @State var selectedAnswer: Player? = nil
     var maxIndex: Int
     var progress: CGFloat
+    var QVC: QuestionViewModel
     
     var body: some View {
         VStack {
@@ -53,11 +54,14 @@ struct QuestionView: View {
                 Spacer(minLength: 0)
                 
                 Button(action: {
+                    //Submit Button
                     if isSubmitted == false {
                         //update the view to show the correct answer
                         isSubmitted.toggle()
                         buttonText = "Next Question"
                         guard let answer = selectedAnswer else {return}
+                        Question.selectedAnswer = selectedAnswer
+
                         if Question.isCorrect(selectedAnswer: answer) {
                             numCorrect += 1
                         } else {
@@ -90,7 +94,7 @@ struct QuestionView: View {
             }
         }
         .fullScreenCover(isPresented: $presentEndView, content: {
-            EndGame(presentQuestionView: $presentQuestionView, numCorrect: numCorrect, numIncorrect: numIncorrect)
+            EndGame(presentQuestionView: $presentQuestionView, numCorrect: numCorrect, numIncorrect: numIncorrect, QVC: QVC)
         })
         .background(Color.black.opacity(0.05).ignoresSafeArea())
     }

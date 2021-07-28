@@ -11,45 +11,44 @@ import SwiftUI
 class Question: ObservableObject, Identifiable{
     var players: [Player]
     var answer: Player
+    var selectedAnswer: Player?
     
-    init(players: [Player]) {
-        self.answer = players[0] //to avoid error
+    init(players: [Player], answer: Player) {
+        self.answer = players[0] //to avoid bugs
+        self.players = players
         for player in players {
-            if player.isAnswer {
+            if player == answer {
                 self.answer = player
+                player.isAnswer = true
             }
         }
-        self.players = players
     }
     
     func isCorrect(selectedAnswer: Player)-> Bool {
-            if selectedAnswer.isAnswer {
-                return true
-            } else {
-                return false
-            }
+        if selectedAnswer.isAnswer {
+            return true
+        } else {
+            return false
         }
+    }
 }
 
 class Player: Equatable {
     var name: String
     var picture: String //Maybe Image, idk
     var team: String
-    var stats: Stats?
+    var stats: Stats
     var isAnswer: Bool
     
-    init(name: String, picture: String, team: String, stats: Stats?) {
+    init(name: String, picture: String, team: String, stats: Stats) {
         self.name = name
         self.picture = picture
         self.team = team
-        //if there is stats the this player is the answer to the question
-        if let stats = stats {
-            self.stats = stats
-            self.isAnswer = true
-        } else {
-            self.stats = nil
-            self.isAnswer = false
-        }
+        self.stats = stats
+        
+        //Probably buggy check later
+        self.isAnswer = false
+        
     }
     
     static func == (lhs: Player, rhs: Player) -> Bool {
@@ -59,14 +58,14 @@ class Player: Equatable {
 }
 
 class Stats {
-    var pointsPerGame: Double
-    var assistsPerGame: Double
-    var reboundsPerGame: Double
+    var pointsPerGame: String
+    var assistsPerGame: String
+    var reboundsPerGame: String
     
     init(pointsPerGame: Double, assistsPerGame: Double, reboundsPerGame: Double) {
-        self.pointsPerGame = pointsPerGame
-        self.assistsPerGame = assistsPerGame
-        self.reboundsPerGame = reboundsPerGame
+        self.pointsPerGame = String(format: "%0.2f", pointsPerGame) 
+        self.assistsPerGame = String(format: "%0.2f", assistsPerGame)
+        self.reboundsPerGame = String(format: "%0.2f", reboundsPerGame)
     }
 }
 

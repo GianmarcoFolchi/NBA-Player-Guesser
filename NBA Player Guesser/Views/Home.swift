@@ -30,17 +30,11 @@ struct Home: View {
         }
         
         .fullScreenCover(isPresented: $presentQuestionView, content: {
-            QuestionView(Question: QVC.questions[currentIndex], currentIndex: $currentIndex, presentQuestionView: $presentQuestionView, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex))
+            QuestionView(Question: QVC.questions[currentIndex], currentIndex: $currentIndex, presentQuestionView: $presentQuestionView, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex), QVC: QVC)
 //                    .offset(x: showNextQuestion ? 1000 : 0)
 //                    .rotationEffect(.init(degrees: showNextQuestion ? 10 : 0))
                 
         })
     }
     
-}
-
-struct HomePreviews: PreviewProvider {
-    static var previews: some View {
-        Home()
-    }
 }

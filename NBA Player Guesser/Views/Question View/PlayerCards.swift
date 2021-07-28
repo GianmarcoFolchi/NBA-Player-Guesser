@@ -133,9 +133,3 @@ struct Player_Cards: View {
         }
     }
 }
-
-//struct Player_Cards_Previews: PreviewProvider {
-//    static var previews: some View {
-//       Player_Cards(playerInfo: Player1)
-//    }
-//}
