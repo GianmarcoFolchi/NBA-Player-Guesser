@@ -15,7 +15,7 @@ struct Player_Cards: View {
     
     var body: some View {
         VStack(spacing: 15) { //first
-            Image(question.players[0].picture)
+            Image(uiImage: question.players[0].picture)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 140)
@@ -42,7 +42,7 @@ struct Player_Cards: View {
         .cornerRadius(15)
         
         VStack(spacing: 15) { //second
-            Image(question.players[1].picture)
+            Image(uiImage: question.players[1].picture)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 140)
@@ -67,7 +67,7 @@ struct Player_Cards: View {
         .cornerRadius(15)
         
         VStack(spacing: 15) { //third
-            Image(question.players[2].picture)
+            Image(uiImage: question.players[2].picture)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 140)
@@ -92,7 +92,7 @@ struct Player_Cards: View {
         .cornerRadius(15)
         
         VStack(spacing: 15) { //fourth
-            Image(question.players[3].picture)
+            Image(uiImage: question.players[3].picture)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 140)

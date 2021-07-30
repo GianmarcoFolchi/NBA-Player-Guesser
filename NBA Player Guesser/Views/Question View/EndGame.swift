@@ -97,7 +97,7 @@ struct PlayerView: View {
     var index: Int
     var body: some View {
         VStack {
-            Image(question.players[index].picture)
+            Image(uiImage: question.players[index].picture)
                 .resizable()
                 .scaledToFit()
             

@@ -35,14 +35,14 @@ class Question: ObservableObject, Identifiable{
 
 class Player: Equatable {
     var name: String
-    var picture: String //Maybe Image, idk
+    var picture: UIImage
     var team: String
     var stats: Stats
     var isAnswer: Bool
     
     init(name: String, picture: String, team: String, stats: Stats) {
         self.name = name
-        self.picture = picture
+        self.picture = picture.toUIImage()
         self.team = team
         self.stats = stats
         
@@ -69,3 +69,17 @@ class Stats {
     }
 }
 
+extension String {
+    func toUIImage()-> UIImage {
+        do {
+            guard let url = URL(string: self) else {return UIImage()}
+            
+            let data: Data = try Data(contentsOf: url)
+            
+            return UIImage(data: data) ?? UIImage()
+        } catch {
+            
+        }
+        return UIImage()
+    }
+}
