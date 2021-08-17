@@ -36,10 +36,9 @@ struct Home: View {
                 
         })
         
-        .onAppear {
-            //init a new object of QVC to get new questions
-            QVC.getTestCase()
-        }
+//        .onAppear {
+//            //init a new object of QVC to get new questions
+//            QVC.getQuestions()
+//        }
     }
-    
 }

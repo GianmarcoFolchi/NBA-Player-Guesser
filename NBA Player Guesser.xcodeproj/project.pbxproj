@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB1A8FB826A745D700A48F96 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A8FB726A745D700A48F96 /* Home.swift */; };
+		BB4D0E8926CA5273003DCF4D /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D0E8826CA5273003DCF4D /* PlayerData.swift */; };
 		BB56922226AFBEE20034A581 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56922126AFBEE20034A581 /* PlayerInfo.swift */; };
 		BB56922426AFC01D0034A581 /* RIght&WrongCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56922326AFC01D0034A581 /* RIght&WrongCounter.swift */; };
 		BB56922826AFD8D90034A581 /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56922726AFD8D90034A581 /* EndGame.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		BB1A8FB726A745D700A48F96 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		BB4D0E8826CA5273003DCF4D /* PlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		BB56922126AFBEE20034A581 /* PlayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		BB56922326AFC01D0034A581 /* RIght&WrongCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RIght&WrongCounter.swift"; sourceTree = "<group>"; };
 		BB56922726AFD8D90034A581 /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				BBBA8CAF26A7FB0B000C29D2 /* Question.swift */,
+				BB4D0E8826CA5273003DCF4D /* PlayerData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				BB65D53526A5436B00C488A5 /* AppDelegate.swift in Sources */,
 				BBBA8CB026A7FB0B000C29D2 /* Question.swift in Sources */,
 				BB65D53C26A5436B00C488A5 /* NBA_Player_Guesser.xcdatamodeld in Sources */,
+				BB4D0E8926CA5273003DCF4D /* PlayerData.swift in Sources */,
 				BB65D56926A5447E00C488A5 /* QuestionView.swift in Sources */,
 				BBBA8CAC26A7F801000C29D2 /* PlayerCards.swift in Sources */,
 				BB65D53726A5436B00C488A5 /* SceneDelegate.swift in Sources */,

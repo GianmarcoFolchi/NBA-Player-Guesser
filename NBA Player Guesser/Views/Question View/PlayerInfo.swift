@@ -51,19 +51,19 @@ struct PlayerInfo: View {
                 })
         }
                 
-        Text("Points Per Game: \(Question.answer.stats.pointsPerGame)")
+        Text("Points Per Game: \(Question.answer.stats.pts)")
             .font(.system(size: 20))
             .fontWeight(.heavy)
             .foregroundColor(.black)
             .padding(.top, 5)
         
-        Text("Assists Per Game: \(Question.answer.stats.assistsPerGame)")
+        Text("Assists Per Game: \(Question.answer.stats.ast)")
             .font(.system(size: 20))
             .fontWeight(.heavy)
             .foregroundColor(.black)
             .padding(.top, 5)
         
-        Text("Rebounds Per Game: \(Question.answer.stats.reboundsPerGame)")
+        Text("Rebounds Per Game: \(Question.answer.stats.reb)")
             .font(.system(size: 20))
             .fontWeight(.heavy)
             .foregroundColor(.black)

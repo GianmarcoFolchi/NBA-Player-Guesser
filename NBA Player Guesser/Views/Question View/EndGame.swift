@@ -106,17 +106,17 @@ struct PlayerView: View {
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
             
-            Text("PPG: \(question.players[index].stats.pointsPerGame)")
+            Text("PPG: \(question.players[index].stats.pts)")
 //                .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
             
-            Text("APG: \(question.players[index].stats.assistsPerGame)")
+            Text("APG: \(question.players[index].stats.ast)")
 //                .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
             
-            Text("RPG: \(question.players[index].stats.reboundsPerGame)")
+            Text("RPG: \(question.players[index].stats.reb)")
 //                .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)

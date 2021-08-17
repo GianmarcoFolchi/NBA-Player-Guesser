@@ -57,16 +57,36 @@ class Player: Equatable {
     }
 }
 
-class Stats {
-    var pointsPerGame: String
-    var assistsPerGame: String
-    var reboundsPerGame: String
-    
-    init(pointsPerGame: Double, assistsPerGame: Double, reboundsPerGame: Double) {
-        self.pointsPerGame = String(format: "%0.2f", pointsPerGame) 
-        self.assistsPerGame = String(format: "%0.2f", assistsPerGame)
-        self.reboundsPerGame = String(format: "%0.2f", reboundsPerGame)
-    }
+class Stats: Codable {
+    var games_played: Int
+    var player_id: Int
+    var season: Double
+    var min: String
+    var fgm: Double
+    var fga: Double
+    var fg3m: Double
+    var ftm: Double
+    var fta: Double
+    var oreb: Double
+    var dreb: Double
+    var reb: Double
+    var ast: Double
+    var stl: Double
+    var blk: Double
+    var turnover: Double
+    var pf: Double
+    var pts: Double
+    var fg_pct: Double
+    var fg3_pct: Double
+    var ft_pct: Double
+}
+
+class dataObject: Codable {
+    var data: [Stats]?
+}
+
+enum Seasons {
+    case year_20_21
 }
 
 extension String {

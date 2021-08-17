@@ -13,7 +13,7 @@ class QuestionViewModel: ObservableObject {
     var currentIndex: Int = 0
     
     init() {
-        getTestCase()
+        getQuestions()
     }
 
     func currentQuestion() -> Question {
@@ -28,20 +28,83 @@ class QuestionViewModel: ObservableObject {
         return width * fraction
     }
     
-    func getTestCase() {
-        let player1 = Player(name: "Steph Curry", picture: "https://d2cwpp38twqe55.cloudfront.net/req/202006192/images/players/bryanko01.jpg", team: "Warriors", stats: Stats(pointsPerGame: 25.9, assistsPerGame: 7, reboundsPerGame: 3))
-        let player2 = Player(name: "Lebron James", picture: "https://d2cwpp38twqe55.cloudfront.net/req/202006192/images/players/jamesle01.jpg", team: "Lakers", stats: Stats(pointsPerGame: 27.83, assistsPerGame: 11.2, reboundsPerGame: 10.99))
-        let player3 = Player(name: "Kevin Durant", picture: "lv1", team: "Nets", stats: Stats(pointsPerGame: 5.34, assistsPerGame: 1.10, reboundsPerGame: 10))
-        let player4 = Player(name: "Ja Morant", picture: "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1629630.png", team: "Grizzlies", stats: Stats(pointsPerGame: 15.34, assistsPerGame: 7.40, reboundsPerGame: 5.1))
-        let question1 = Question(players: [player1, player2, player3, player4], answer: player1)
+    func fetchPlayerStats(IDs: [Int], completionHandler: @escaping ([Stats])-> Void) {
+        //formatting the IDs to make the call
+        var playerIDS = String()
+        for playerID in IDs {
+            if playerID == IDs[IDs.count - 1] {
+                playerIDS += "\(playerID)"
+            } else {
+                playerIDS += "\(playerID),"
+            }
+        }
+        
+        let url = URL(string:"https://www.balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=\(playerIDS)")
+        
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if error == nil && data != nil {
+                let decoder = JSONDecoder()
+                do {
+                    let dataObject = try decoder.decode(dataObject.self, from: data!)
+    //                if let jsonString = String(data: data!, encoding: .utf8) {
+    //                    print(jsonString)
+    //                }
+                    completionHandler(dataObject.data!)
+                } catch {
+                    print("error = \(error)")
+                }
+            }
+        }
+        task.resume()
+    }
 
-        let player5 = Player(name: "Jimmy Butler", picture: "https://d2cwpp38twqe55.cloudfront.net/req/202006192/images/players/bryanko01.jpg", team: "Heat", stats: Stats(pointsPerGame: 22.5, assistsPerGame: 7.2, reboundsPerGame: 7.24))
-        let player6 = Player(name: "Anthony Davis", picture: "lv1", team: "Lakers", stats: Stats(pointsPerGame: 32.63, assistsPerGame: 2.3, reboundsPerGame: 9.4))
-        let player7 = Player(name: "Devin Booker", picture: "lv1", team: "Suns", stats: Stats(pointsPerGame: 25.53243, assistsPerGame: 2.13, reboundsPerGame: 4))
-        let player8 = Player(name: "Nikola Jokic", picture: "lv1", team: "Nuggets", stats: Stats(pointsPerGame: 26.74, assistsPerGame: 7.40, reboundsPerGame: 12.1))
-        let question2 = Question(players: [player5, player6, player7, player8], answer: player8)
+    func getPlayerIDs(num: Int, season: Seasons)-> [Int] {
+        var IDs = season_20_21_IDs
+        
+        if season == .year_20_21 {
+            IDs = season_20_21_IDs
+        }
+        //add other seasons here
+        
+        let length = IDs.count - 1
+        var playerIDs = [Int]()
+        var i = 0
+        
+        while i < num {
+            let randNum = Int.random(in: 0...length)
+            print(i, randNum)
+            if !playerIDs.contains(randNum) {
+                playerIDs.append(IDs[randNum])
+                i += 1
+            } else {
+                print("\(playerIDs.contains(randNum)) duplicate")
+            }
+        }
+        print(playerIDs, playerIDs.count)
+        
+        return playerIDs
+    }
 
-        self.questions = [question1, question2]
+    func getHeadshot()-> String {
+        
+        return "https://d2cwpp38twqe55.cloudfront.net/req/202006192/images/players/bryanko01.jpg"
+    }
+    
+    func getQuestions() {
+        fetchPlayerStats(IDs: getPlayerIDs(num: 40, season: .year_20_21), completionHandler: { stats in
+            var players = [Player]()
+            //create player objects
+            for stat in stats {
+                let player = Player(name: dict[stat.player_id]![0], picture: self.getHeadshot(), team: dict[stat.player_id]![1], stats: stat)
+                players.append(player)
+            }
+            for i in stride(from: 0, to: players.count - 1, by: 4) {
+                let randNum = i + Int.random(in: 0..<4)
+                players[randNum].isAnswer = true
+                let question = Question(players: Array(players[i...i+3]), answer: players[randNum])
+                self.questions.append(question)
+            }
+        })
     }
 }
 
