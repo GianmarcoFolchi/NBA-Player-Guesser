@@ -30,6 +30,7 @@ struct Home: View {
         }
         
         .fullScreenCover(isPresented: $presentQuestionView, content: {
+            ///the problem is that if you go too fast, it doesnt have time to get the questions and says that the index is out of range
             QuestionView(Question: QVC.questions[currentIndex], currentIndex: $currentIndex, presentQuestionView: $presentQuestionView, maxIndex: QVC.questions.count - 1, progress: QVC.progress(currIndex: currentIndex), QVC: QVC)
 //                    .offset(x: showNextQuestion ? 1000 : 0)
 //                    .rotationEffect(.init(degrees: showNextQuestion ? 10 : 0))
