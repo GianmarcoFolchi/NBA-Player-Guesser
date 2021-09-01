@@ -9,16 +9,16 @@ import Foundation
 import SwiftUI
 
 class QuestionViewModel: ObservableObject {
-    var questions: [Question] = []
+    @Published var questions: [Question] = []
     var currentIndex: Int = 0
-    
+    var currentQuestion: Question? = nil
     init() {
         getQuestions()
     }
     
-    func currentQuestion() -> Question {
-        return self.questions[self.currentIndex]
-    }
+    //    func currentQuestion() -> Question {
+    //        return self.questions[self.currentIndex]
+    //    }
     
     func progress(currIndex: Int)-> CGFloat {
         let fraction = CGFloat(currIndex + 1) / CGFloat(self.questions.count)
@@ -31,7 +31,6 @@ class QuestionViewModel: ObservableObject {
     func fetchPlayerStats(IDs: [Int], completionHandler: @escaping ([Stats])-> Void) {
         //formatting the IDs to make the
         var playerIDS = String()
-        print(IDs.count)
         for playerID in IDs {
             if playerID == IDs[IDs.count - 1] {
                 playerIDS += "\(playerID)"
@@ -95,16 +94,19 @@ class QuestionViewModel: ObservableObject {
                 return
             }
             var players = [Player]()
-                for stat in stats {
-                    let player = Player(name: dict[stat.player_id]![0], picture: self.getHeadshot(), team: dict[stat.player_id]![1], stats: stat)
-                    players.append(player)
-                }
+            for stat in stats {
+                let player = Player(name: dict[stat.player_id]![0], picture: self.getHeadshot(), team: dict[stat.player_id]![1], stats: stat)
+                players.append(player)
+            }
             
-                for i in stride(from: 0, to: players.count - 1, by: 4) {
-                    let randNum = i + Int.random(in: 0..<4)
-                    players[randNum].isAnswer = true
-                    let question = Question(players: Array(players[i...i+3]), answer: players[randNum])
+            for i in stride(from: 0, to: players.count - 1, by: 4) {
+                let randNum = i + Int.random(in: 0..<4)
+                players[randNum].isAnswer = true
+                let question = Question(players: Array(players[i...i+3]), answer: players[randNum])
+                DispatchQueue.main.async {   // <====
                     self.questions.append(question)
+                }
+                
             }
             
         }

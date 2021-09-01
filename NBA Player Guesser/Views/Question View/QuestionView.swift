@@ -10,9 +10,9 @@ import SwiftUI
 struct QuestionView: View {
     //StateObject use on creation
     //ObservedObject use this for subviews
+    @StateObject var QVC = QuestionViewModel()
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var Question: Question
-    @Binding var currentIndex: Int
+    @State var currentIndex: Int = 0
     @Binding var presentQuestionView: Bool
     @State var isSubmitted = false
     @State var buttonText = "Submit"
@@ -20,13 +20,11 @@ struct QuestionView: View {
     @State var numIncorrect = 0
     @State var presentEndView: Bool = false
     @State var selectedAnswer: Player? = nil
-    var maxIndex: Int
-    var progress: CGFloat
-    var QVC: QuestionViewModel
+    @State var downloadComplete = false
     
     var body: some View {
         VStack {
-            if QVC.questions.isEmpty == nil {
+            if QVC.questions.isEmpty == true {
                 ProgressView()
             } else {
                 Spacer()
@@ -37,15 +35,15 @@ struct QuestionView: View {
                     
                     Capsule()
                         .fill(Color.green)
-                        .frame(width: progress, height: 6)
+                        .frame(width: QVC.progress(currIndex: currentIndex), height: 6)
                 })
                 
-                PlayerInfo(Question: Question, numCorrect: numCorrect, numIncorrect: numIncorrect)
+                PlayerInfo(Question: QVC.questions[currentIndex], numCorrect: numCorrect, numIncorrect: numIncorrect)
                 
                 Spacer(minLength: 0)
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2), spacing: 25, content: {
-                    Player_Cards(question: Question, isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswer)
+                    Player_Cards(question: QVC.questions[currentIndex], isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswer)
                 })
                     .padding()
                 
@@ -58,9 +56,9 @@ struct QuestionView: View {
                         isSubmitted.toggle()
                         buttonText = "Next Question"
                         guard let answer = selectedAnswer else {return}
-                        Question.selectedAnswer = selectedAnswer
+                        QVC.questions[currentIndex].selectedAnswer = selectedAnswer
 
-                        if Question.isCorrect(selectedAnswer: answer) {
+                        if QVC.questions[currentIndex].isCorrect(selectedAnswer: answer) {
                             numCorrect += 1
                         } else {
                             numIncorrect += 1
@@ -72,11 +70,13 @@ struct QuestionView: View {
                         buttonText = "Submit"
                         
                         //Maintain Index
-                        if currentIndex == maxIndex {
+                        if currentIndex == QVC.questions.count - 1 {
                             presentEndView.toggle()
                             currentIndex = 0
+                            QVC.currentIndex = currentIndex
                         } else {
                             currentIndex += 1
+                            QVC.currentIndex = currentIndex
                         }
                     }
                 }, label: {
