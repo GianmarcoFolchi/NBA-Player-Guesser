@@ -12,15 +12,11 @@ struct QuestionView: View {
     //ObservedObject use this for subviews
     @StateObject var QVC = QuestionViewModel()
     @Environment(\.presentationMode) var presentationMode
-    @State var currentIndex: Int = 0
     @Binding var presentQuestionView: Bool
     @State var isSubmitted = false
     @State var buttonText = "Submit"
-    @State var numCorrect = 0
-    @State var numIncorrect = 0
     @State var presentEndView: Bool = false
     @State var selectedAnswer: Player? = nil
-    @State var downloadComplete = false
     
     var body: some View {
         VStack {
@@ -35,15 +31,15 @@ struct QuestionView: View {
                     
                     Capsule()
                         .fill(Color.green)
-                        .frame(width: QVC.progress(currIndex: currentIndex), height: 6)
+                        .frame(width: QVC.progress(currIndex: QVC.numCorrect + QVC.numIncorrect), height: 6)
                 })
                 
-                PlayerInfo(Question: QVC.questions[currentIndex], numCorrect: numCorrect, numIncorrect: numIncorrect)
+                PlayerInfo(Question: QVC.currentQuestion!, numCorrect: QVC.numCorrect, numIncorrect: QVC.numIncorrect)
                 
                 Spacer(minLength: 0)
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2), spacing: 25, content: {
-                    Player_Cards(question: QVC.questions[currentIndex], isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswer)
+                    Player_Cards(question: QVC.currentQuestion!, isSubmitted: $isSubmitted, selectedAnswer: $selectedAnswer)
                 })
                     .padding()
                 
@@ -56,27 +52,22 @@ struct QuestionView: View {
                         isSubmitted.toggle()
                         buttonText = "Next Question"
                         guard let answer = selectedAnswer else {return}
-                        QVC.questions[currentIndex].selectedAnswer = selectedAnswer
+                        QVC.currentQuestion!.selectedAnswer = selectedAnswer
 
-                        if QVC.questions[currentIndex].isCorrect(selectedAnswer: answer) {
-                            numCorrect += 1
+                        if QVC.currentQuestion!.isCorrect(selectedAnswer: answer) {
+                            QVC.numCorrect += 1
                         } else {
-                            numIncorrect += 1
+                            QVC.numIncorrect += 1
                         }
                     } else {
                         //Go into the next question and reset subview
                         isSubmitted.toggle()
                         selectedAnswer = nil
                         buttonText = "Submit"
-                        
-                        //Maintain Index
-                        if currentIndex == QVC.questions.count - 1 {
+
+                        //Next Question
+                        if QVC.nextQuestion() == false {
                             presentEndView.toggle()
-                            currentIndex = 0
-                            QVC.currentIndex = currentIndex
-                        } else {
-                            currentIndex += 1
-                            QVC.currentIndex = currentIndex
                         }
                     }
                 }, label: {
@@ -92,7 +83,7 @@ struct QuestionView: View {
             }
         }
         .fullScreenCover(isPresented: $presentEndView, content: {
-            EndGame(presentQuestionView: $presentQuestionView, numCorrect: numCorrect, numIncorrect: numIncorrect, QVC: QVC)
+            GameRecap(presentQuestionView: $presentQuestionView, QVC: QVC)
         })
         .background(Color.black.opacity(0.05).ignoresSafeArea())
     }

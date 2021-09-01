@@ -10,15 +10,25 @@ import SwiftUI
 
 class QuestionViewModel: ObservableObject {
     @Published var questions: [Question] = []
-    var currentIndex: Int = 0
-    var currentQuestion: Question? = nil
+    @Published var numCorrect = 0
+    @Published var numIncorrect = 0
+    @Published var currentQuestion: Question? = nil
+    
     init() {
         getQuestions()
     }
     
-    //    func currentQuestion() -> Question {
-    //        return self.questions[self.currentIndex]
-    //    }
+    func nextQuestion()-> Bool {
+        let currIndex = numCorrect + numIncorrect - 1
+        print(currIndex)
+        if currIndex == self.questions.count - 1 {
+            return false
+        }
+        self.currentQuestion = self.questions[currIndex + 1]
+        return true
+        
+    }
+    
     
     func progress(currIndex: Int)-> CGFloat {
         let fraction = CGFloat(currIndex + 1) / CGFloat(self.questions.count)
@@ -85,7 +95,6 @@ class QuestionViewModel: ObservableObject {
         return "https://d2cwpp38twqe55.cloudfront.net/req/202006192/images/players/bryanko01.jpg"
     }
     
-    
     func getQuestions() {
         
         let completionHander = { (stats:[Stats]) in
@@ -103,12 +112,11 @@ class QuestionViewModel: ObservableObject {
                 let randNum = i + Int.random(in: 0..<4)
                 players[randNum].isAnswer = true
                 let question = Question(players: Array(players[i...i+3]), answer: players[randNum])
-                DispatchQueue.main.async {   // <====
+                DispatchQueue.main.async {
                     self.questions.append(question)
+                    self.currentQuestion = self.questions[0]
                 }
-                
             }
-            
         }
         fetchPlayerStats(IDs: getPlayerIDs(num: 40, season: .year_20_21), completionHandler: completionHander)
         
