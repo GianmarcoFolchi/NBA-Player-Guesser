@@ -23,9 +23,11 @@ struct Player_Cards: View {
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
             
             Text(question.players[0].team)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
         }
         
         .padding()
@@ -50,9 +52,11 @@ struct Player_Cards: View {
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
             
             Text(question.players[1].team)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
         }
         
         .padding()
@@ -75,9 +79,11 @@ struct Player_Cards: View {
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
             
             Text(question.players[2].team)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
         }
         
         .padding()
@@ -100,9 +106,11 @@ struct Player_Cards: View {
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
             
             Text(question.players[3].team)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
         }
         
         .padding()

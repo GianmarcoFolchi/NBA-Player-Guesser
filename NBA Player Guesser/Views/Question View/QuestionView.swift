@@ -31,7 +31,7 @@ struct QuestionView: View {
                     
                     Capsule()
                         .fill(Color.green)
-                        .frame(width: QVC.progress(currIndex: QVC.numCorrect + QVC.numIncorrect), height: 6)
+                        .frame(width: QVC.progress(), height: 6)
                 })
                 
                 PlayerInfo(Question: QVC.currentQuestion!, numCorrect: QVC.numCorrect, numIncorrect: QVC.numIncorrect)

@@ -164,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				BB1A8FB726A745D700A48F96 /* Home.swift */,
+				BB56922726AFD8D90034A581 /* GameRecap.swift */,
 				BBBA8CB326A9E56D000C29D2 /* Question View */,
 			);
 			path = Views;
@@ -190,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				BB65D56826A5447E00C488A5 /* QuestionView.swift */,
-				BB56922726AFD8D90034A581 /* GameRecap.swift */,
 				BB56922126AFBEE20034A581 /* PlayerInfo.swift */,
 				BBBA8CAB26A7F801000C29D2 /* PlayerCards.swift */,
 				BB56922326AFC01D0034A581 /* RIght&WrongCounter.swift */,

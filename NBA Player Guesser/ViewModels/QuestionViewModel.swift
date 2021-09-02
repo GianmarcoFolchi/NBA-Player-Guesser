@@ -15,26 +15,21 @@ class QuestionViewModel: ObservableObject {
     @Published var currentQuestion: Question? = nil
     
     init() {
-        getQuestions()
+        getQuestions(10)
     }
     
     func nextQuestion()-> Bool {
-        let currIndex = numCorrect + numIncorrect - 1
-        print(currIndex)
+        let currIndex = self.numCorrect + self.numIncorrect - 1
         if currIndex == self.questions.count - 1 {
             return false
         }
         self.currentQuestion = self.questions[currIndex + 1]
         return true
-        
     }
     
-    
-    func progress(currIndex: Int)-> CGFloat {
-        let fraction = CGFloat(currIndex + 1) / CGFloat(self.questions.count)
-        
+    func progress()-> CGFloat {
+        let fraction = CGFloat(self.numCorrect + self.numIncorrect + 1) / CGFloat(self.questions.count)
         let width = UIScreen.main.bounds.width - 30
-        
         return width * fraction
     }
     
@@ -95,13 +90,17 @@ class QuestionViewModel: ObservableObject {
         return "https://d2cwpp38twqe55.cloudfront.net/req/202006192/images/players/bryanko01.jpg"
     }
     
-    func getQuestions() {
-        
-        let completionHander = { (stats:[Stats]) in
-            guard stats.count > 39 else {
-                self.getQuestions()
-                return
+    func getQuestions(_ numberOfQuestions: Int) {
+        let completionHander = { (playerStats: [Stats]) in
+            var stats = playerStats
+            if stats.count < numberOfQuestions * 4 {
+                let numToRemove = stats.count % 4
+                print("removing \(numToRemove), count before = \(stats.count)")
+                stats.removeSubrange(ClosedRange(uncheckedBounds: (lower: (stats.count) - numToRemove, upper: stats.count - 1)))
+                print("stats after \(stats.count)")
+                self.getQuestions(((numberOfQuestions * 4) - stats.count) / 4)
             }
+            
             var players = [Player]()
             for stat in stats {
                 let player = Player(name: dict[stat.player_id]![0], picture: self.getHeadshot(), team: dict[stat.player_id]![1], stats: stat)
@@ -118,8 +117,7 @@ class QuestionViewModel: ObservableObject {
                 }
             }
         }
-        fetchPlayerStats(IDs: getPlayerIDs(num: 40, season: .year_20_21), completionHandler: completionHander)
-        
+        fetchPlayerStats(IDs: getPlayerIDs(num: numberOfQuestions * 4, season: .year_20_21), completionHandler: completionHander)
     }
 }
 
