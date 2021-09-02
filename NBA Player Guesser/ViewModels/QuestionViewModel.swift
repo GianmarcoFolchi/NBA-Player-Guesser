@@ -51,9 +51,6 @@ class QuestionViewModel: ObservableObject {
                 let decoder = JSONDecoder()
                 do {
                     let dataObject = try decoder.decode(dataObject.self, from: data!)
-                    //                if let jsonString = String(data: data!, encoding: .utf8) {
-                    //                    print(jsonString)
-                    //                }
                     completionHandler(dataObject.data!)
                 } catch {
                     print("error = \(error)")
@@ -70,16 +67,13 @@ class QuestionViewModel: ObservableObject {
             IDs = season_20_21_IDs
         }
         //add other seasons here
-        
-        let length = IDs.count - 1
+    
         var playerIDs = [Int]()
-        var i = 0
-        
-        while i < num {
-            let randNum = Int.random(in: 0...length)
+    
+        for _ in 0..<num {
+            let randNum = Int.random(in: 0...IDs.count - 1)
             if playerIDs.contains(randNum) == false {
                 playerIDs.append(IDs[randNum])
-                i += 1
             }
         }
         return playerIDs
@@ -91,6 +85,7 @@ class QuestionViewModel: ObservableObject {
     }
     
     func getQuestions(_ numberOfQuestions: Int) {
+        
         let completionHander = { (playerStats: [Stats]) in
             var stats = playerStats
             if stats.count < numberOfQuestions * 4 {
