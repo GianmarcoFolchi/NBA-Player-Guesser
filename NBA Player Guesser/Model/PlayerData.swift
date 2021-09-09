@@ -8,7 +8,7 @@
 import Foundation
 
 //0 = name, 1 = team, 2 = position
-public var dict = [3547249:["Precious Achiuwa", "Heat", "F"],
+public var playerInfo = [3547249:["Precious Achiuwa", "Heat", "F"],
             2:["Jaylen Adams", "Bulls", "G"],
             3:["Steven Adams", "Pelicans", "C"],
             4:["Bam Adebayo", "Heat", "C-F"],

@@ -45,10 +45,7 @@ class Player: Equatable {
         self.picture = picture.toUIImage()
         self.team = team
         self.stats = stats
-        
-        //Probably buggy check later
         self.isAnswer = false
-        
     }
     
     static func == (lhs: Player, rhs: Player) -> Bool {
@@ -83,6 +80,22 @@ class Stats: Codable {
 
 class dataObject: Codable {
     var data: [Stats]?
+}
+
+class pictureObject: Codable {
+    var league: pictureObject1
+}
+class pictureObject1: Codable {
+    var standard: [pictureObject2]
+}
+class pictureObject2: Codable {
+    var firstName: String
+    var lastName: String
+    var personId: String
+    
+    func getFullName()-> String {
+        return (firstName + " " + lastName)
+    }
 }
 
 enum Seasons {

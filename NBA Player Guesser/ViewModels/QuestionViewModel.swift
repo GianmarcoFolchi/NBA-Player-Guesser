@@ -79,9 +79,28 @@ class QuestionViewModel: ObservableObject {
         return playerIDs
     }
     
-    func getHeadshot()-> String {
+    func getHeadshot(player: Player) {
+        let fullName = playerInfo[player.stats.player_id]![0]
+        let (firstName, lastName) = splitContactFullName(name: fullName)
+        let url = URL(string: "https://data.nba.net/data/10s/prod/v1/2020/players.json")
         
-        return "https://d2cwpp38twqe55.cloudfront.net/req/202006192/images/players/bryanko01.jpg"
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if error == nil && data != nil {
+                let decoder = JSONDecoder()
+                do {
+                    let pictureObject = try decoder.decode(pictureObject.self, from: data!)
+                    for object in pictureObject.league.standard {
+                        if object.firstName == firstName && object.lastName == lastName {
+                            player.picture = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/\(object.personId).png".toUIImage()
+                            break
+                        }
+                    }
+                } catch {
+                    print("error = \(error)")
+                }
+            }
+        }
+        task.resume()
     }
     
     func getQuestions(_ numberOfQuestions: Int) {
@@ -90,15 +109,15 @@ class QuestionViewModel: ObservableObject {
             var stats = playerStats
             if stats.count < numberOfQuestions * 4 {
                 let numToRemove = stats.count % 4
-                print("removing \(numToRemove), count before = \(stats.count)")
+                guard numToRemove != 0 else { return }
                 stats.removeSubrange(ClosedRange(uncheckedBounds: (lower: (stats.count) - numToRemove, upper: stats.count - 1)))
-                print("stats after \(stats.count)")
                 self.getQuestions(((numberOfQuestions * 4) - stats.count) / 4)
             }
             
             var players = [Player]()
             for stat in stats {
-                let player = Player(name: dict[stat.player_id]![0], picture: self.getHeadshot(), team: dict[stat.player_id]![1], stats: stat)
+                let player = Player(name: playerInfo[stat.player_id]![0], picture: "HERE", team: playerInfo[stat.player_id]![1], stats: stat)
+                self.getHeadshot(player: player)
                 players.append(player)
             }
             
@@ -115,4 +134,17 @@ class QuestionViewModel: ObservableObject {
         fetchPlayerStats(IDs: getPlayerIDs(num: numberOfQuestions * 4, season: .year_20_21), completionHandler: completionHander)
     }
 }
+    
+    func splitContactFullName(name: String?) -> (firstName: String?, lastName: String?) {
+       let namePieces = name?.components(separatedBy: " ")
+       let firstName = namePieces?[0]
+       var lastName = ""
+       if (namePieces?.count ?? 0) > 1 {
+           lastName = namePieces?[1] ?? ""
+           for i in 2..<(namePieces?.count ?? 0) {
+               lastName += " \(namePieces?[i] ?? "")"
+           }
+       }
+       return (firstName, lastName)
+   }
 
