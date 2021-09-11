@@ -113,7 +113,7 @@ struct PlayerView: View {
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
             
-            Text("RPG: \(String(format: "%.2f", (question.players[index].stats.pts*100)/100))")
+            Text("RPG: \(String(format: "%.2f", (question.players[index].stats.reb*100)/100))")
 //                .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)

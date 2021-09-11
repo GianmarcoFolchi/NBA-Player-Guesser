@@ -13,6 +13,7 @@ class QuestionViewModel: ObservableObject {
     @Published var numCorrect = 0
     @Published var numIncorrect = 0
     @Published var currentQuestion: Question? = nil
+    @Published var photosUploaded: Bool = false
     
     init() {
         getQuestions(10)
@@ -67,9 +68,9 @@ class QuestionViewModel: ObservableObject {
             IDs = season_20_21_IDs
         }
         //add other seasons here
-    
+        
         var playerIDs = [Int]()
-    
+        
         for _ in 0..<num {
             let randNum = Int.random(in: 0...IDs.count - 1)
             if playerIDs.contains(randNum) == false {
@@ -79,29 +80,36 @@ class QuestionViewModel: ObservableObject {
         return playerIDs
     }
     
-    func getHeadshot(player: Player) {
-        let fullName = playerInfo[player.stats.player_id]![0]
-        let (firstName, lastName) = splitContactFullName(name: fullName)
+    func getHeadshot(players: [Player]) {
         let url = URL(string: "https://data.nba.net/data/10s/prod/v1/2020/players.json")
         
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if error == nil && data != nil {
-                let decoder = JSONDecoder()
-                do {
-                    let pictureObject = try decoder.decode(pictureObject.self, from: data!)
-                    for object in pictureObject.league.standard {
-                        if object.firstName == firstName && object.lastName == lastName {
-                            player.picture = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/\(object.personId).png".toUIImage()
-                            break
+        //Get the JSON
+            let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                guard error == nil && data != nil else { return }
+                    let decoder = JSONDecoder()
+                    do {
+                        //create Picture Objects
+                        let pictureObject = try decoder.decode(pictureObject.self, from: data!)
+                        //loop through all of the players and get their pictures
+                        for player in players {
+                            for object in pictureObject.league.standard {
+                                let (firstName, lastName) = splitContactFullName(name: playerInfo[player.stats.player_id]![0])
+                                
+                                if object.firstName == firstName && object.lastName == lastName {
+                                    player.picture = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/\(object.personId).png".toUIImage()
+                                    break
+                                }
+                            }
                         }
+                        self.photosUploaded = true
+                    } catch {
+                        print("error = \(error)")
                     }
-                } catch {
-                    print("error = \(error)")
-                }
+                
             }
+            task.resume()
         }
-        task.resume()
-    }
+    
     
     func getQuestions(_ numberOfQuestions: Int) {
         
@@ -117,9 +125,9 @@ class QuestionViewModel: ObservableObject {
             var players = [Player]()
             for stat in stats {
                 let player = Player(name: playerInfo[stat.player_id]![0], picture: "HERE", team: playerInfo[stat.player_id]![1], stats: stat)
-                self.getHeadshot(player: player)
                 players.append(player)
             }
+            self.getHeadshot(players: players)
             
             for i in stride(from: 0, to: players.count - 1, by: 4) {
                 let randNum = i + Int.random(in: 0..<4)
@@ -134,17 +142,17 @@ class QuestionViewModel: ObservableObject {
         fetchPlayerStats(IDs: getPlayerIDs(num: numberOfQuestions * 4, season: .year_20_21), completionHandler: completionHander)
     }
 }
-    
-    func splitContactFullName(name: String?) -> (firstName: String?, lastName: String?) {
-       let namePieces = name?.components(separatedBy: " ")
-       let firstName = namePieces?[0]
-       var lastName = ""
-       if (namePieces?.count ?? 0) > 1 {
-           lastName = namePieces?[1] ?? ""
-           for i in 2..<(namePieces?.count ?? 0) {
-               lastName += " \(namePieces?[i] ?? "")"
-           }
-       }
-       return (firstName, lastName)
-   }
+
+func splitContactFullName(name: String?) -> (firstName: String?, lastName: String?) {
+    let namePieces = name?.components(separatedBy: " ")
+    let firstName = namePieces?[0]
+    var lastName = ""
+    if (namePieces?.count ?? 0) > 1 {
+        lastName = namePieces?[1] ?? ""
+        for i in 2..<(namePieces?.count ?? 0) {
+            lastName += " \(namePieces?[i] ?? "")"
+        }
+    }
+    return (firstName, lastName)
+}
 

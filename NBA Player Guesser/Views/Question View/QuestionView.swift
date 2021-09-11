@@ -20,7 +20,7 @@ struct QuestionView: View {
     
     var body: some View {
         VStack {
-            if QVC.questions.isEmpty == true || QVC.questions[0].players[0].picture == "HERE".toUIImage() {
+            if QVC.questions.isEmpty == true || QVC.photosUploaded == false {
                 ProgressView()
             } else {
                 Spacer()
