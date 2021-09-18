@@ -16,38 +16,36 @@ struct PlayerView: View {
                 .resizable()
                 .scaledToFit()
             
-            Text(question.players[index].name)
-//                .font(.title2)
+            Text("\(question.players[index].name.getFirstName())\n\(question.players[index].name.getLastName())")
+                .font(.headline)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
                 
-            
             Text("PPG: \(String(format: "%.2f", (question.players[index].stats.pts*100)/100))")
-//                .font(.title2)
-                .fontWeight(.heavy)
+                .font(.subheadline)
+                .fontWeight(.medium)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
             
             Text("APG: \(String(format: "%.2f", (question.players[index].stats.ast*100)/100))")
-//                .font(.title2)
-                .fontWeight(.heavy)
+                .font(.subheadline)
+                .fontWeight(.medium)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
             
             Text("RPG: \(String(format: "%.2f", (question.players[index].stats.reb*100)/100))")
-//                .font(.title2)
-                .fontWeight(.heavy)
+                .font(.subheadline)
+                .fontWeight(.medium)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
             
             Text("BLK: \(String(format: "%.2f", (question.players[index].stats.blk*100)/100))")
-//                .font(.title2)
-                .fontWeight(.heavy)
+                .font(.subheadline)
+                .fontWeight(.medium)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
-            
-            
-            
         }
     }
 }

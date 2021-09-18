@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Home: View {
-//    @StateObject var QVC: QuestionViewModel = QuestionViewModel()
     @State var presentQuestionView: Bool = false
     var body: some View {
         VStack {
