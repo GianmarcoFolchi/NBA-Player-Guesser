@@ -12,27 +12,30 @@ struct Player_Cards: View {
     @ObservedObject var question: Question
     @Binding var isSubmitted: Bool
     @Binding var selectedAnswer: Player?
+    @State var spacing02: CGFloat = 0
+    @State var spacing14: CGFloat = 0
     
     var body: some View {
-        VStack(spacing: 15) { //first
+        VStack(spacing: 10) { //first
             Image(uiImage: question.players[0].picture)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 140)
-            Text(question.players[0].name)
+//                .padding(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+            
+            Text("\(question.players[0].name.getFirstName())\n\(question.players[0].name.getLastName()) ")
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
+                .lineLimit(2)
             
             Text(question.players[0].team)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
         }
-        
         .padding()
         .frame(maxWidth: .infinity)
-        
         .onTapGesture(perform: {
             selectedAnswer = question.players[0]
         })
@@ -43,16 +46,18 @@ struct Player_Cards: View {
         )
         .cornerRadius(15)
         
-        VStack(spacing: 15) { //second
+        VStack(spacing: 10) { //second
             Image(uiImage: question.players[1].picture)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 140)
-            Text(question.players[1].name)
+            
+            Text("\(question.players[1].name.getFirstName())\n\(question.players[1].name.getLastName()) ")
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
+                .lineLimit(2)
             
             Text(question.players[1].team)
                 .foregroundColor(.black)
@@ -70,16 +75,18 @@ struct Player_Cards: View {
         )
         .cornerRadius(15)
         
-        VStack(spacing: 15) { //third
+        VStack(spacing: 10) { //third
             Image(uiImage: question.players[2].picture)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 140)
-            Text(question.players[2].name)
+
+            Text("\(question.players[2].name.getFirstName())\n\(question.players[2].name.getLastName()) ")
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
+                .lineLimit(2)
             
             Text(question.players[2].team)
                 .foregroundColor(.black)
@@ -97,16 +104,18 @@ struct Player_Cards: View {
         )
         .cornerRadius(15)
         
-        VStack(spacing: 15) { //fourth
+        VStack(spacing: 10) { //fourth
             Image(uiImage: question.players[3].picture)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 140)
-            Text(question.players[3].name)
+
+            Text("\(question.players[3].name.getFirstName())\n\(question.players[3].name.getLastName()) ")
                 .font(.title2)
                 .fontWeight(.heavy)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
+                .lineLimit(2)
             
             Text(question.players[3].team)
                 .foregroundColor(.black)

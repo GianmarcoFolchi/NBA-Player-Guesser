@@ -28,6 +28,14 @@ struct GameRecap: View {
 
                     Spacer()
                     
+                    Text("Questions")
+                        .font(.system(size: 38))
+                        .fontWeight(.heavy)
+                        .foregroundColor(.purple)
+                        .padding(.top)
+                    
+                    Spacer()
+                    
                     Label(
                         title: { Text("\(QVC.numIncorrect)")
                             .font(.largeTitle)
@@ -38,12 +46,6 @@ struct GameRecap: View {
                             .foregroundColor(.red)
                         })
                 }
-                
-                Text("Questions")
-                    .font(.system(size: 38))
-                    .fontWeight(.heavy)
-                    .foregroundColor(.purple)
-                    .padding(.top)
                 
                 ForEach(QVC.questions) { question in
                     ZStack {
@@ -84,40 +86,6 @@ struct GameRecap: View {
                     presentationMode.wrappedValue.dismiss()
                     presentQuestionView.toggle()
                 }
-        }
-    }
-}
-
-
-struct PlayerView: View {
-    var question: Question
-    var index: Int
-    var body: some View {
-        VStack {
-            Image(uiImage: question.players[index].picture)
-                .resizable()
-                .scaledToFit()
-            
-            Text(question.players[index].name)
-//                .font(.title2)
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-            
-            Text("PPG: \(String(format: "%.2f", (question.players[index].stats.pts*100)/100))")
-//                .font(.title2)
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-            
-            Text("APG: \(String(format: "%.2f", (question.players[index].stats.ast*100)/100))")
-//                .font(.title2)
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-            
-            Text("RPG: \(String(format: "%.2f", (question.players[index].stats.reb*100)/100))")
-//                .font(.title2)
-                .fontWeight(.heavy)
-                .foregroundColor(.black)
-            
         }
     }
 }

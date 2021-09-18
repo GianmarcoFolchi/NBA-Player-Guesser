@@ -84,31 +84,33 @@ class QuestionViewModel: ObservableObject {
         let url = URL(string: "https://data.nba.net/data/10s/prod/v1/2020/players.json")
         
         //Get the JSON
-            let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                guard error == nil && data != nil else { return }
-                    let decoder = JSONDecoder()
-                    do {
-                        //create Picture Objects
-                        let pictureObject = try decoder.decode(pictureObject.self, from: data!)
-                        //loop through all of the players and get their pictures
-                        for player in players {
-                            for object in pictureObject.league.standard {
-                                let (firstName, lastName) = splitContactFullName(name: playerInfo[player.stats.player_id]![0])
-                                
-                                if object.firstName == firstName && object.lastName == lastName {
-                                    player.picture = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/\(object.personId).png".toUIImage()
-                                    break
-                                }
-                            }
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            guard error == nil && data != nil else { return }
+            let decoder = JSONDecoder()
+            do {
+                //create Picture Objects
+                let pictureObject = try decoder.decode(pictureObject.self, from: data!)
+                //loop through all of the players and get their pictures
+                for player in players {
+                    for object in pictureObject.league.standard {
+                        let (firstName, lastName) = splitContactFullName(name: playerInfo[player.stats.player_id]![0])
+                        
+                        if object.firstName == firstName && object.lastName == lastName {
+                            player.picture = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/\(object.personId).png".toUIImage()
+                            break
                         }
-                        self.photosUploaded = true
-                    } catch {
-                        print("error = \(error)")
                     }
-                
+                }
+                DispatchQueue.main.async {
+                    self.photosUploaded = true
+                }
+            } catch {
+                print("error = \(error)")
             }
-            task.resume()
+            
         }
+        task.resume()
+    }
     
     
     func getQuestions(_ numberOfQuestions: Int) {
